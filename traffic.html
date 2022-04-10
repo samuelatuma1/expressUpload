@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width : 180px;
+            height : 180px;
+            border-radius : 50%;
+            margin : 3px;
+            background-color: grey;
+        }
+        section{
+            width : 220px;
+            display : flex;
+            flex-wrap : wrap;
+            justify-content : center;
+            align-items : center;
+            border :1px solid grey;
+            border-radius : 5px;
+            margin-bottom : 10px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div id="div0"></div>
+        <div id="div1"></div>
+        <div id="div2"></div>
+    </section>
+    <button onclick="showLight()" >Change Light</button>
+    <script>
+        let count = -1;
+        let prev = 2;
+        function showLight(e){
+            let cols = ['red', 'yellow', 'green']
+            if (count === 2){
+                count = 0
+            } else{
+                count++
+            }
+
+            let curr_div = document.querySelector(`#div${count}`)
+            let prev_div = document.que
+            rySelector(`#div${prev}`)
+            prev_div.style.backgroundColor = 'grey'
+            curr_div.style.backgroundColor = cols[count]
+            
+            prev = count
+
+        }
+        setInterval(showLight, 600)
+    </script>
+</body>
+</html>

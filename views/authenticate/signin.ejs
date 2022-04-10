@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: black;
+            color: blanchedalmond;
+        }
+        .err, .success{
+            background-color: maroon;
+            color : white;
+            padding : 10px;
+        }
+        .success{
+            background-color: rgb(50, 156, 121);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Picture Story. Sign In Here</h1>
+
+    <% if (locals.msg) { %>
+        <li class="success"><%= locals.msg %></li>
+    <% } %>
+
+    <% if (locals.err) { %>
+        <li class="err"><%= locals.err %></li>
+    <% } %>
+
+
+    <!-- Form -->
+    <form method="POST">
+        <p>
+            <label for="username">
+                Username : <input type="text" name="username" id="username" minlength="2">
+            </label>
+        </p>
+        <p>
+            <label for="password">
+                Password : <input type="text" name="password" id="password" minlength="3">
+            </label>
+        </p>
+
+        <button>
+            Sign In
+        </button>
+    </form>
+
+    <p>Don't have an account yet? <a href="./signup">Sign Up here</a></p>
+</body>
+</html>

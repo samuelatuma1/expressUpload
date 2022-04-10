@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Pictures</title>
+    <style>
+        *{
+            margin : 0px;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        }
+        nav{
+            padding : 10px;
+            flex-wrap : wrap;
+            display : flex;
+            justify-content: space-between;
+        }
+        nav li{
+            list-style-type: none;
+        }
+        nav > li{
+            color : white;
+            background-color: teal;
+            padding : 10px;
+            border-radius: 20px;;
+        }
+        nav ul{
+            display : flex;
+            min-width : 60%;
+            justify-content: space-evenly;
+            align-items: center;;
+        }
+        nav a {
+            text-decoration : none;
+        }
+        main{
+            display : grid;
+            grid-template-columns: repeat(3, 30%);
+            /* grid-auto-rows : minmax( 300px, 500px); */
+            row-gap: 5px;
+            column-gap : 5px;
+            align-content: center;
+            justify-content: center;
+
+        }
+        article{
+            box-shadow: 0px 0px 4px 0px rgb(191, 189, 189);
+            border-radius : 20px;
+            padding : 10px;
+        }
+        div img{
+            display : block;
+            width : 100%;
+            height : 400px;
+            object-fit: cover;
+        }
+        article section{
+            padding : 10px;
+        }
+        @media screen and (max-width : 800px){
+            main {
+                grid-template-columns: 95%;
+            }
+        }
+        main p span{
+            color : white;
+            background-color: teal;
+            padding : 8px;
+            display : inline-block;
+            border-radius: 16px;;
+            margin : 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <li>
+            PicStory
+        </li>
+        <ul>
+            <li><a href='./allPosts'>View Stories</a></li>
+            <li><a href="./">Add Story</a></li>
+        </ul>
+    </nav>
+    <% if (locals.userImages) { %>
+        <main>
+            <% for (let picStory of userImages) { %>
+                <article aria-label="Image Holder">
+                    <div>
+                        <img src="<%= '/static/uploads/' + picStory.imgName%>">
+                    </div>
+                    <section>
+                        <p>
+                            <span>Uploaded</span> <%=  picStory.date || '2022-04-10T12:43:40.769Z' %>
+                        </p>
+                        <p>
+                           <span>About</span> <%= picStory.story %>
+                        </p>
+                        
+                    </section>
+                </article>
+            <% } %>
+        </main>
+    <% } %>
+</body>
+</html>

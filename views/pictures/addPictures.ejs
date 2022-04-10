@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin : 0px;
+            padding : 0px;
+            box-sizing: border-box;
+            
+        }
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+        }
+        button{
+            padding : 8px;
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 3px;
+            box-shadow: 0px 0px 7px 0px rgb(174, 194, 212);
+            color: navy;
+            transition : 0.8s;
+            cursor : pointer;
+        }
+        button:hover{
+            box-shadow: 0px 0px 10px 0px navy;
+
+        }
+        input, textarea{
+            border : 1px solid transparent;
+            padding : 10px;
+            margin-bottom : 20px;
+            border-radius: 20px;
+            background-color: aliceblue;
+            display : block;
+        }
+        textarea{
+                width : 400px;
+            }
+        form{
+            margin : 20px;
+            border : 1px solid transparent;
+            box-shadow : 0px 0px 5px 0px rgb(220, 219, 219);
+            padding : 20px;
+            border-radius: 40px;
+        }
+        form:hover{
+            box-shadow : 0px 0px 10px 0px rgb(133, 130, 130);
+
+        }
+        input:hover{
+            box-shadow: 0px 1px 10px 0px teal;
+        }
+    
+        @media screen and (min-width : 600px){
+            form{
+                width : 800px;
+                margin : auto;
+
+        
+            }
+        }
+        h1{
+            text-align: center;
+            padding : 10px;
+            margin : 15px 0px;
+            box-shadow : 0px 0px 5px 0px rgb(188, 185, 185);
+        }
+        p{
+            margin : 10px 0px;
+        }
+        nav{
+            padding : 10px;
+            flex-wrap : wrap;
+            display : flex;
+            justify-content: space-between;
+        }
+        nav li{
+            list-style-type: none;
+        }
+        nav > li{
+            color : white;
+            background-color: teal;
+            padding : 10px;
+            border-radius: 20px;;
+        }
+        nav ul{
+            display : flex;
+            min-width : 60%;
+            justify-content: space-evenly;
+            align-items: center;;
+        }
+        nav a {
+            text-decoration : none;
+        }
+        
+        .err, .success{
+            background-color: maroon;
+            color : white;
+            padding : 10px;
+        }
+        .success{
+            background-color: rgb(50, 156, 121);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <li>
+            PicStory
+        </li>
+        <ul>
+            <li><a href='./allPosts'>View Stories</a></li>
+            <li><a href="./">Add Story</a></li>
+        </ul>
+    </nav>
+    <section aria-label="add Picture">
+        <header>
+            <h1>Welcome <%= locals.user || '' %></h1>
+        </header>
+
+        <main>
+           
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Server messages -->
+                <div aria-label="Server messages">
+                    <% if( locals.msg) { %>
+                        <li class="success"><%= locals.msg %></li>
+                    <% } %>
+    
+                    <% if( locals.err) { %>
+                        <li class="err"><%= locals.err %></li>
+                    <% } %>
+                </div>
+
+                <h2>Tell a Picture Story</h2>
+                <p>
+                    <label for="picture">
+                        Add Picture : <input type="file" accept="image/*" name="picture" id="picture" required>
+                    </label>
+                </p>
+        
+                <p>
+                    <label for="story">
+                        Add story : <textarea name="story" id="story" minlength="1" required></textarea>
+                    </label>
+                </p>
+        
+                <button>Save Story</button>
+        
+            </form>
+        </main>
+
+    </section>
+</body>
+</html>
